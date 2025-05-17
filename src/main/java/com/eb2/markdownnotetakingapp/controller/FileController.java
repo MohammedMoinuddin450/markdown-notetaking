@@ -38,7 +38,7 @@ public class FileController {
     @PostMapping("/save")
     public ResponseEntity<Map<String, String>> save(@RequestParam("file") MultipartFile file) {
 
-        if (storageService.isValidExtension(file)) {
+        if (!storageService.isValidExtension(file)) {
             throw new InvalidFile("Invalid file extension");
         }
 
@@ -60,7 +60,7 @@ public class FileController {
     @PostMapping("covert-to-html")
     public ResponseEntity<String> convertToHtml(@RequestParam("file") MultipartFile file) {
 
-        if (storageService.isValidExtension(file)) {
+        if (!storageService.isValidExtension(file)) {
             throw new InvalidFile("Invalid file extension");
         }
 
